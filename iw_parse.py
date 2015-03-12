@@ -42,9 +42,10 @@ def get_signal_level(cell):
     @return string
         The signal level of the network.
     """
-
-    signal = matching_line(cell, "Signal level=").split("=")[1].split("/")
-    return str(int(round(float(signal[0]) / float(signal[1]) * 100)))
+    string =  matching_line(cell, "Signal level=")
+    string = string.replace("dBm","")
+    signal = string.split("=")[1].split("/")
+    return str(int(round(float(signal[0])) * 100))    
 
 def get_channel(cell):
     """ Gets the channel of a network / cell.
